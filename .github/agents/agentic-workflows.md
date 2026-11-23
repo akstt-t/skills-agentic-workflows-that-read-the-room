@@ -248,3 +248,7 @@ gh aw compile <workflow-name> --dry-run  # first test of workflow changes
 # Upgrade workflows
 gh aw fix --write
 gh aw compile --validate
+
+## Important Notes
+
+- When creating or editing agentic workflow files, do not compile them. Only create or update the markdown workflow file.
