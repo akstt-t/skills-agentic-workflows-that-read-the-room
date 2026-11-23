@@ -248,27 +248,3 @@ gh aw compile <workflow-name> --dry-run  # first test of workflow changes
 # Upgrade workflows
 gh aw fix --write
 gh aw compile --validate
-```
-
-## Key Features of gh-aw
-
-- **Natural Language Workflows**: Write workflows in markdown with YAML frontmatter
-- **AI Engine Support**: Copilot, Claude, Codex, or custom engines
-- **MCP Server Integration**: Connect to Model Context Protocol servers for tools
-- **Safe Outputs**: Structured communication between AI and GitHub API
-- **Strict Mode**: Security-first validation and sandboxing
-- **Shared Components**: Reusable workflow building blocks
-- **Repo Memory**: Persistent git-backed storage for agents
-- **Sandboxed Execution**: All workflows run in the Agent Workflow Firewall (AWF) sandbox, enabling full `bash` and `edit` tools by default
-
-## Important Notes
-
-- For complete documentation, load `.github/aw/github-agentic-workflows.md` from the resolved guidance repository/ref.
-- Use gh-aw MCP tools only when exposed and authorized; otherwise use available CLI, cached evidence or static source through the CLI/MCP reference.
-- Workflows must be compiled to `.lock.yml` files before running in GitHub Actions
-- **Bash tools are enabled by default** - Don't restrict bash commands unnecessarily since workflows are sandboxed by the AWF
-- Follow security best practices: minimal permissions, explicit network access, no template injection
-- **Network configuration**: Use ecosystem identifiers (`node`, `python`, `go`, etc.) or explicit FQDNs in `network.allowed`. Bare shorthands like `npm` or `pypi` are **not** valid. See `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/network.md` for the full list of valid ecosystem identifiers and domain patterns.
-- **Single-file output**: When creating a workflow, produce exactly **one** workflow `.md` file. Do not create separate documentation files (architecture docs, runbooks, usage guides, etc.). If documentation is needed, add a brief `## Usage` section inside the workflow file itself.
-- **Triggering runs**: Only where permitted and human-validated under `debug-agentic-workflow.md`, prefer `gh aw run <workflow-name>` over `gh workflow run <file>.lock.yml` for workflow resolution, input validation and run-tracking. Use the reviewed remote ref; explicit no-dispatch rules override user requests.
-- **CLI commands reference**: For a complete guide on all `gh aw` commands and their MCP tool equivalents (for restricted environments), see `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/cli-commands.md`
